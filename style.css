@@ -1,0 +1,119 @@
+body {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+
+body header, body .sidebar, body footer, body main, body main .block-1, body main .block-2, body main .block-3, body main .block-4, body main .block-5, body main .block-6, body main .block-7, body main .block-8, body main .block-9, body main .block-10 {
+  position: absolute;
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0; }
+  body > header, body > .sidebar, body > footer, body > main, body main body > .block-1, body main body > .block-2, body main body > .block-3, body main body > .block-4, body main body > .block-5, body main body > .block-6, body main body > .block-7, body main body > .block-8, body main body > .block-9, body main body > .block-10 {
+    padding: 10px; }
+  body header {
+    top: calc(0px);
+    left: calc(0px);
+    right: calc(100% - 100vw);
+    bottom: calc(100% - 100px);
+    margin: 0px;
+    background-color: lightgray; }
+    body header h1 {
+      font-size: 1.5em;
+      margin-top: 0; }
+  body .sidebar {
+    top: calc(100px);
+    left: calc(0px);
+    right: calc(100% - 200px);
+    bottom: calc(100% - (100vh - 50px));
+    margin: 0px;
+    background-color: gray; }
+  body footer {
+    top: calc((100vh - 50px));
+    left: calc(0px);
+    right: calc(100% - 100vw);
+    bottom: calc(100% - 100vh);
+    margin: 0px;
+    background-color: darkgray; }
+  body main {
+    top: calc(100px);
+    left: calc(200px);
+    right: calc(100% - 100vw);
+    bottom: calc(100% - (100vh - 50px));
+    margin: 0px; }
+    body main > header, body main > .sidebar, body main > footer, body main > main, body main > .block-1, body main > .block-2, body main > .block-3, body main > .block-4, body main > .block-5, body main > .block-6, body main > .block-7, body main > .block-8, body main > .block-9, body main > .block-10 {
+      padding: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
+    body main .block-1 {
+      top: calc(0%);
+      left: calc(0%);
+      right: calc(100% - 100%);
+      bottom: calc(100% - 40%);
+      margin: 5px;
+      background-color: red; }
+    body main .block-2 {
+      top: calc(40%);
+      left: calc(0%);
+      right: calc(100% - 50%);
+      bottom: calc(100% - 60%);
+      margin: 5px;
+      background-color: blue; }
+    body main .block-3 {
+      top: calc(40%);
+      left: calc(50%);
+      right: calc(100% - 100%);
+      bottom: calc(100% - 60%);
+      margin: 5px;
+      background-color: green; }
+    body main .block-4 {
+      top: calc(60%);
+      left: calc(0%);
+      right: calc(100% - 33.33333%);
+      bottom: calc(100% - 80%);
+      margin: 5px;
+      background-color: purple; }
+    body main .block-5 {
+      top: calc(60%);
+      left: calc(33.33333%);
+      right: calc(100% - 66.66667%);
+      bottom: calc(100% - 80%);
+      margin: 5px;
+      background-color: cyan; }
+    body main .block-6 {
+      top: calc(60%);
+      left: calc(66.66667%);
+      right: calc(100% - 100%);
+      bottom: calc(100% - 80%);
+      margin: 5px;
+      background-color: magenta; }
+    body main .block-7 {
+      top: calc(80%);
+      left: calc(0%);
+      right: calc(100% - 25%);
+      bottom: calc(100% - 100%);
+      margin: 5px;
+      background-color: chartreuse; }
+    body main .block-8 {
+      top: calc(80%);
+      left: calc(25%);
+      right: calc(100% - 50%);
+      bottom: calc(100% - 100%);
+      margin: 5px;
+      background-color: hotpink; }
+    body main .block-9 {
+      top: calc(80%);
+      left: calc(50%);
+      right: calc(100% - 75%);
+      bottom: calc(100% - 100%);
+      margin: 5px;
+      background-color: royalblue; }
+    body main .block-10 {
+      top: calc(80%);
+      left: calc(75%);
+      right: calc(100% - 100%);
+      bottom: calc(100% - 100%);
+      margin: 5px;
+      background-color: teal; }
+
+/*# sourceMappingURL=style.css.map */

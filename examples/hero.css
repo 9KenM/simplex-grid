@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+main {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+
+body {
+  margin: 0; }
+
+main {
+  overflow: auto; }
+  main .hero {
+    margin-left: calc(((50vw - 200px) - 0vw));
+    margin-top: calc(((50vh - 125px) - 0vh));
+    width: calc(((50vw + 200px) - (50vw - 200px)));
+    height: calc(((50vh + 125px) - (50vh - 125px)));
+    box-sizing: border-box;
+    color: white;
+    border: 20px solid;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    padding: 25px; }
+
+main {
+  background: url(http://wallpapercave.com/wp/usiz6BV.jpg) no-repeat center center fixed;
+  background-size: cover; }
+
+/*# sourceMappingURL=hero.css.map */

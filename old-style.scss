@@ -1,0 +1,139 @@
+
+// Layout settings
+
+$grid-spacing: 10px;
+
+// Mixins
+@mixin grid-block-dimensions($width, $height){
+
+    @if $width == 'auto' {
+        width: auto;
+    } @else {
+        width: calc(#{$width} - #{$grid-spacing * 2});
+    }
+
+    @if $height == 'auto' {
+        height: auto;
+    } @else {
+        height: calc(#{$height} - #{$grid-spacing * 2});  
+    }
+
+}
+
+@mixin grid-setup($spacing){
+    word-spacing: -0.25em !important;
+    height: 100%;
+    > * {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        margin: $spacing;
+        word-spacing: initial;
+    }
+}
+
+// Grid classes
+%grid-block {
+}
+
+%grid-container {
+    word-spacing: -0.25em !important;
+    height: 100%;
+    > * {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        margin: $grid-spacing;
+        word-spacing: initial;
+    }
+}
+
+// Styles
+
+body {
+    // @extend %grid-container;
+    margin: 0;
+    padding: 0;
+}
+
+header, .sidebar, footer, main {
+    // @extend %grid-block;
+    @include grid-setup(0);
+}
+
+header {
+    @include grid-block-dimensions(100%, 100px);
+    background-color:lightgray;
+}
+
+.sidebar {
+    @include grid-block-dimensions(200px, 100%);
+    background-color:gray;
+}
+
+footer {
+    @include grid-block-dimensions(100%, 50px);
+    background-color: darkgray;
+}
+
+main {
+    @include grid-block-dimensions('100% - 200px', auto);
+	// @extend %grid-container;
+    @include grid-setup(10px);
+}
+
+section {
+    // @extend %grid-block;
+    padding: 1.5em;
+    overflow: hidden;
+}
+
+.block-1 {
+    @include grid-block-dimensions(100%, 100%);
+    background-color: red;
+}
+
+.block-2 {
+    @include grid-block-dimensions(100%/2, 100%/2);
+    background-color: blue;
+}
+
+.block-3 {
+    @include grid-block-dimensions(100%/2, 100%/2);
+    background-color: green;
+}
+
+.block-4 {
+    @include grid-block-dimensions(100%/3, 100%/3);
+    background-color: purple;
+}
+
+.block-5 {
+    @include grid-block-dimensions(100%/3, 100%/3);
+    background-color: cyan;
+}
+
+.block-6 {
+    @include grid-block-dimensions(100%/3, 100%/3);
+    background-color: magenta;
+}
+
+.block-7 {
+    @include grid-block-dimensions(100%/4, 100%/4);
+    background-color: chartreuse;
+}
+
+.block-8 {
+    @include grid-block-dimensions(100%/4, 100%/4);
+    background-color: hotpink;
+}
+
+.block-9 {
+    @include grid-block-dimensions(100%/4, 100%/4);
+    background-color: royalblue;
+}
+
+.block-10 {
+    @include grid-block-dimensions(100%/4, 100%/4);
+    background-color: teal;
+}

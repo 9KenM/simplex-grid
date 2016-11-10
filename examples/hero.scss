@@ -1,0 +1,156 @@
+%grid-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+%grid-region {
+    position: absolute;
+    box-sizing: border-box;
+}
+
+@function grid-lines($count, $max: 100%){
+    $count: $count - 1;
+    $result: ();
+
+    @for $i from 0 through $count {
+        $result: append($result, $i / $count  * $max);
+    }
+
+    @return $result;
+}
+
+@function grid-parse-line($lines, $line){
+    @if $line == start {
+        $line: 1;
+    }
+    @if $line == end {
+        $line: length($lines);
+    }
+
+    @return $line;
+}
+
+@function grid-get-line($grid, $line, $orientation){
+    $lines: map-get($grid, $orientation);
+    $line: grid-parse-line($lines, $line);
+
+    @return nth($lines, $line);
+}
+
+@function grid-distance($grid, $from-line, $to-line, $orientation: v){
+    $from: grid-get-line($grid, $from-line, $orientation);
+    $to: grid-get-line($grid, $to-line, $orientation);
+
+    @return '(#{$to} - #{$from})';
+}
+
+@mixin grid-region($grid, $left-line, $right-line, $top-line, $bottom-line){
+
+    $left: grid-get-line($grid, $left-line, v);
+    $right: grid-get-line($grid, $right-line, v);
+    $top: grid-get-line($grid, $top-line, h);
+    $bottom: grid-get-line($grid, $bottom-line, h);
+    $spacing: map-get($grid, spacing);
+
+    @if not $spacing {
+    	$spacing: 0px;
+    }
+
+    top: calc(#{$top});
+    left: calc(#{$left});
+    right: calc(100% - #{$right});
+    bottom: calc(100% - #{$bottom});
+    margin: $spacing / 2;
+
+    @extend %grid-region;
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+%triangle {
+	border: 20px solid;
+	border-bottom: 0;
+	border-left-color: rgba(0,0,0,0);
+	border-right-color: rgba(0,0,0,0);
+
+	&:before, &:after {
+		content: '';
+		border: 20px solid;
+		border-top: 0;
+		border-left-color: transparent;
+		border-right-color: transparent;
+		position: absolute;
+		top: -30px;
+		width: 100%;
+	}
+
+	&:before {
+		transform-origin: top left;
+		transform: rotate(60deg);
+		left: -3px;
+		shape-outside: polygon(75px 0, 150px 75px, 75px 150px, 0 75px);
+	}
+
+	&:after {
+		transform-origin: top right;
+		transform: rotate(-60deg);
+		right: -3px;
+	}
+}
+
+// Main reference grid
+$grid: (
+v: 0vw '(50vw - 200px)' '(50vw + 200px)' 100vw,
+h: 0vh '(50vh - 125px)' '(50vh + 125px)' 100vh);
+
+
+// $grid: (
+// 	v: grid-lines(4, 100vw),
+// 	h: grid-lines(4, 100vh)
+// );
+
+body {
+	margin: 0;
+}
+
+main {
+
+    @extend %grid-container;
+
+    overflow: auto;
+
+	.hero {
+	    // @include grid-region($grid, 2, 3, 2, 3);
+
+	    margin-left: calc(#{grid-distance($grid, start, 2)});
+	    margin-top: calc(#{grid-distance($grid, start, 2, h)});
+	    width: calc(#{grid-distance($grid, 2, 3)});
+	    height: calc(#{grid-distance($grid, 2, 3, h)});
+
+	    box-sizing: border-box;
+
+	    color: white;
+
+		border: 20px solid;
+
+	    text-align: center;
+	    text-transform: uppercase;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		font-family: 'Lato', sans-serif;
+
+		padding: 25px;
+
+	}
+
+}
+
+main {
+	background: url(http://wallpapercave.com/wp/usiz6BV.jpg) no-repeat center center fixed;
+	background-size: cover;
+}

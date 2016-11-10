@@ -1,0 +1,170 @@
+%grid-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+%grid-region {
+    position: absolute;
+    box-sizing: border-box;
+}
+
+@function grid-lines($count, $max: 100%){
+    $count: $count - 1;
+    $result: ();
+
+    @for $i from 0 through $count {
+        $result: append($result, $i / $count  * $max);
+    }
+@debug $result;
+    @return $result;
+}
+
+@function grid-parse-line($lines, $line){
+    @if $line == start {
+        $line: 1;
+    }
+    @if $line == end {
+        $line: length($lines);
+    }
+
+    @return $line;
+}
+
+@function grid-get-line($grid, $line, $orientation){
+    $lines: map-get($grid, $orientation);
+    $line: grid-parse-line($lines, $line);
+
+    @return nth($lines, $line);
+}
+
+@function grid-distance($grid, $from-line, $to-line, $orientation: v){
+    $from: grid-get-line($grid, $from-line, $orientation);
+    $to: grid-get-line($grid, $to-line, $orientation);
+
+    @return '(#{$to} - #{$from})';
+}
+
+@mixin grid-region($grid, $left-line, $right-line, $top-line, $bottom-line){
+
+    $left: grid-get-line($grid, $left-line, v);
+    $right: grid-get-line($grid, $right-line, v);
+    $top: grid-get-line($grid, $top-line, h);
+    $bottom: grid-get-line($grid, $bottom-line, h);
+    $spacing: map-get($grid, spacing);
+
+    @if not $spacing {
+        $spacing: 0px;
+    }
+
+    top: calc(#{$top});
+    left: calc(#{$left});
+    right: calc(100% - #{$right});
+    bottom: calc(100% - #{$bottom});
+    margin: $spacing / 2;
+
+    @extend %grid-region;
+
+}
+
+body {
+
+    margin: 0;
+    padding: 0;
+
+    $grid: (
+        v: 0px 200px 100vw,
+        h: 0px 100px '(100vh - 50px)' 100vh,
+        spacing: 0px);
+
+    @extend %grid-container;
+
+    >%grid-region {
+        padding: 10px;
+    }
+
+    header {
+        @include grid-region($grid, start, end, start, 2);
+        background-color:lightgray;
+        h1 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+    }
+
+    .sidebar {
+        @include grid-region($grid, start, 2, 2, 3);
+        background-color:gray;
+    }
+
+    footer {
+        @include grid-region($grid, start, end, 3, end);
+        background-color: darkgray;
+    }
+
+    main {
+        @include grid-region($grid, 2, end, 2, 3);
+
+        $main-grid: (
+            v: grid-lines(13, 100%),
+            h: grid-lines(6, 100%),
+            spacing: 10px);
+
+        >%grid-region {
+            padding:10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .block-1 {
+            @include grid-region($main-grid, 1, 13, 1, 3);
+            background-color: red;
+        }
+
+        .block-2 {
+            @include grid-region($main-grid, 1, 7, 3, 4);
+            background-color: blue;
+        }
+
+        .block-3 {
+            @include grid-region($main-grid, 7, 13, 3, 4);
+            background-color: green;
+        }
+
+        .block-4 {
+            @include grid-region($main-grid, 1, 5, 4, 5);
+            background-color: purple;
+        }
+
+        .block-5 {
+            @include grid-region($main-grid, 5, 9, 4, 5);
+            background-color: cyan;
+        }
+
+        .block-6 {
+            @include grid-region($main-grid, 9, 13, 4, 5);
+            background-color: magenta;
+        }
+
+        .block-7 {
+            @include grid-region($main-grid, 1, 4, 5, 6);
+            background-color: chartreuse;
+        }
+
+        .block-8 {
+            @include grid-region($main-grid, 4, 7, 5, 6);
+            background-color: hotpink;
+        }
+
+        .block-9 {
+            @include grid-region($main-grid, 7, 10, 5, 6);
+            background-color: royalblue;
+        }
+
+        .block-10 {
+            @include grid-region($main-grid, 10, 13, 5, 6);
+            background-color: teal;
+        }
+
+    }
+
+}
