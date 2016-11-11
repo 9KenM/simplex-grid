@@ -48,34 +48,34 @@ body {
     body main .block-1 {
       top: calc(0%);
       left: calc(0%);
-      right: calc(100% - 100%);
+      right: calc(100% - 58.33333%);
       bottom: calc(100% - 40%);
       margin: 5px;
       background-color: red; }
     body main .block-2 {
       top: calc(40%);
-      left: calc(0%);
-      right: calc(100% - 50%);
+      left: calc(25%);
+      right: calc(100% - 58.33333%);
       bottom: calc(100% - 60%);
       margin: 5px;
       background-color: blue; }
     body main .block-3 {
-      top: calc(40%);
-      left: calc(50%);
+      top: calc(0%);
+      left: calc(58.33333%);
       right: calc(100% - 100%);
       bottom: calc(100% - 60%);
       margin: 5px;
       background-color: green; }
     body main .block-4 {
-      top: calc(60%);
+      top: calc(40%);
       left: calc(0%);
-      right: calc(100% - 33.33333%);
+      right: calc(100% - 25%);
       bottom: calc(100% - 80%);
       margin: 5px;
       background-color: purple; }
     body main .block-5 {
       top: calc(60%);
-      left: calc(33.33333%);
+      left: calc(50%);
       right: calc(100% - 66.66667%);
       bottom: calc(100% - 80%);
       margin: 5px;
@@ -95,7 +95,7 @@ body {
       margin: 5px;
       background-color: chartreuse; }
     body main .block-8 {
-      top: calc(80%);
+      top: calc(60%);
       left: calc(25%);
       right: calc(100% - 50%);
       bottom: calc(100% - 100%);
