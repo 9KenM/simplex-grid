@@ -16,7 +16,6 @@
     @for $i from 0 through $count {
         $result: append($result, $i / $count  * $max);
     }
-@debug $result;
     @return $result;
 }
 
